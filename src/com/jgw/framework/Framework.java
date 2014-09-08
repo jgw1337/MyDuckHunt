@@ -1,6 +1,7 @@
 package com.jgw.framework;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -50,6 +51,8 @@ public class Framework extends Canvas {
 
 	// Temporary String (placeholder)
 	private String tmpStr;
+	private Font font = new Font("monospaced", Font.BOLD, 28);
+
 	
 	// Menu Image
 	private BufferedImage menuImg;
@@ -178,6 +181,8 @@ public class Framework extends Canvas {
 	 */
 	@Override
 	public void Draw(Graphics2D g2d) {
+		g2d.setFont(font);
+
 		switch (gameState) {
 		case PLAYING:
 			game.Draw(g2d, mousePosition());
@@ -190,9 +195,9 @@ public class Framework extends Canvas {
 			tmpStr = "Use left mouse button to shoot the duck.";
 			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.65));
 			tmpStr = "Click with left mouse button to start the game.";
-			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.67));
-			tmpStr = "Press ESC at any time to exit the game.";
 			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.70));
+			tmpStr = "Press ESC at any time to exit the game.";
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.75));
 			tmpStr = "-jgw-";
 			g2d.drawString(tmpStr, 7, frameHeight - 5);
 			break;

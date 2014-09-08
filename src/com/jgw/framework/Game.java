@@ -89,7 +89,7 @@ public class Game {
 	// Sets variables and objects for game
 	private void Initialize() {
 		rand = new Random();
-		font = new Font("monospaced", Font.BOLD, 18);
+		font = new Font("monospaced", Font.BOLD, 28);
 
 		ducks = new ArrayList<Duck>();
 
@@ -242,10 +242,10 @@ public class Game {
 		g2d.setFont(font);
 		g2d.setColor(Color.darkGray);
 		
-		g2d.drawString("RUNAWAY: " + runawayDucks, 10, 21);
-		g2d.drawString("KILLS: " + killedDucks, 160, 21);
-		g2d.drawString("SHOOTS: " + shoots, 299, 21);
-		g2d.drawString("SCORE: " + score, 440, 21);
+		g2d.drawString("RUNAWAY: " + runawayDucks, 10, 25);
+		g2d.drawString("KILLS: " + killedDucks, 250, 25);
+		g2d.drawString("SHOOTS: " + shoots, 450, 25);
+		g2d.drawString("SCORE: " + score, 650, 25);
 	}
 
 	/**
@@ -260,14 +260,14 @@ public class Game {
 		// The first text is used for shade
 		g2d.setColor(Color.BLACK);
 		tmpStr = "Game Over";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.65) + 1);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.40) + 1);
 		tmpStr = "Press space or enter to restart";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.70) + 1);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.45) + 1);
 
 		g2d.setColor(Color.RED);
 		tmpStr = "Game Over";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.65));
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.40));
 		tmpStr = "Press space or enter to restart";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.65));
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.45));
 }
 }
