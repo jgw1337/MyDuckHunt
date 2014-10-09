@@ -28,7 +28,7 @@ public class Game {
 	private Font font;
 
 	// Array of ducks
-	private ArrayList<Duck> ducks;
+	private ArrayList<Target> ducks;
 
 	// How many ducks flew away?
 	private int runawayDucks;
@@ -57,8 +57,11 @@ public class Game {
 	// Bottom grass
 	private BufferedImage grassImg;
 
-	// Duck
-	private BufferedImage duckImg;
+	// Target
+	private BufferedImage targetImgCurrent;
+	private BufferedImage targetImg1, targetImg2, targetImg3, targetImg4, targetImg5;
+	private BufferedImage targetImg6, targetImg7, targetImg8, targetImg9, targetImg10;
+	private BufferedImage targetImg11, targetImg12, targetImg13;
 
 	// Gun sight
 	private BufferedImage sightImg;
@@ -91,7 +94,7 @@ public class Game {
 		rand = new Random();
 		font = new Font("monospaced", Font.BOLD, 28);
 
-		ducks = new ArrayList<Duck>();
+		ducks = new ArrayList<Target>();
 
 		runawayDucks = 0;
 		killedDucks = 0;
@@ -112,9 +115,42 @@ public class Game {
 			URL grassImgUrl = this.getClass().getResource("data/grass.png");
 			grassImg = ImageIO.read(grassImgUrl);
 
-			URL duckImgUrl = this.getClass().getResource("data/duck.png");
-			duckImg = ImageIO.read(duckImgUrl);
+			URL duckImg1Url = this.getClass().getResource("data/profile_e.jpg");
+			targetImg1 = ImageIO.read(duckImg1Url);
 
+			URL duckImg2Url = this.getClass().getResource("data/profile_f.jpg");
+			targetImg2 = ImageIO.read(duckImg2Url);
+
+			URL duckImg3Url = this.getClass().getResource("data/profile_g.jpg");
+			targetImg3 = ImageIO.read(duckImg3Url);
+
+			URL duckImg4Url = this.getClass().getResource("data/profile_j.jpg");
+			targetImg4 = ImageIO.read(duckImg4Url);
+
+			URL duckImg5Url = this.getClass().getResource("data/profile_m.jpg");
+			targetImg5 = ImageIO.read(duckImg5Url);
+
+			URL duckImg6Url = this.getClass().getResource("data/profile_w.jpg");
+			targetImg6 = ImageIO.read(duckImg6Url);
+
+			URL duckImg7Url = this.getClass().getResource("data/char_link.png");
+			targetImg7 = ImageIO.read(duckImg7Url);
+			
+			URL duckImg8Url = this.getClass().getResource("data/char_mario.png");
+			targetImg8 = ImageIO.read(duckImg8Url);
+			
+			URL duckImg9Url = this.getClass().getResource("data/char_megaman.png");
+			targetImg9 = ImageIO.read(duckImg9Url);
+			
+			URL duckImg10Url = this.getClass().getResource("data/char_sackboy.png");
+			targetImg10 = ImageIO.read(duckImg10Url);
+			
+			URL duckImg11Url = this.getClass().getResource("data/char_samus.png");
+			targetImg11 = ImageIO.read(duckImg11Url);
+			
+			URL duckImg12Url = this.getClass().getResource("data/char_simon.png");
+			targetImg12 = ImageIO.read(duckImg12Url);
+			
 			URL sightImgUrl = this.getClass().getResource("data/sight.png");
 			sightImg = ImageIO.read(sightImgUrl);
 			sightImgMiddleWidth = sightImg.getWidth() / 2;
@@ -130,7 +166,7 @@ public class Game {
 		ducks.clear();
 
 		// Set lastDuckTime to zero
-		Duck.lastDuckTime = 0;
+		Target.lastDuckTime = 0;
 
 		runawayDucks = 0;
 		killedDucks = 0;
@@ -151,21 +187,63 @@ public class Game {
 	 */
 	public void updateGame(long gameTime, Point mousePosition) {
 		// Create new duck, if it's time, and add to array
-		if (System.nanoTime() - Duck.lastDuckTime > Duck.timeBetweenDucks) {
+		if (System.nanoTime() - Target.lastDuckTime > Target.timeBetweenDucks) {
+			// Random target
+			switch (rand.nextInt(13)+1) {
+			case 1:
+				targetImgCurrent = targetImg1;
+				break;
+			case 2:
+				targetImgCurrent = targetImg2;
+				break;
+			case 3:
+				targetImgCurrent = targetImg3;
+				break;
+			case 4:
+				targetImgCurrent = targetImg4;
+				break;
+			case 5:
+				targetImgCurrent = targetImg5;
+				break;
+			case 6:
+				targetImgCurrent = targetImg6;
+				break;
+			case 7:
+				targetImgCurrent = targetImg7;
+				break;
+			case 8:
+				targetImgCurrent = targetImg8;
+				break;
+			case 9:
+				targetImgCurrent = targetImg9;
+				break;
+			case 10:
+				targetImgCurrent = targetImg10;
+				break;
+			case 11:
+				targetImgCurrent = targetImg11;
+				break;
+			case 12:
+				targetImgCurrent = targetImg12;
+				break;
+			default:
+				targetImgCurrent = targetImg1;
+				break;
+			}
 			// Create new duck and add to array
-			ducks.add(new Duck(Duck.duckLines[Duck.nextDuckLines][0]
-					+ rand.nextInt(200), Duck.duckLines[Duck.nextDuckLines][1],
-					Duck.duckLines[Duck.nextDuckLines][2],
-					Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+			ducks.add(new Target(Target.duckLines[Target.nextDuckLines][0]
+					+ rand.nextInt(200), Target.duckLines[Target.nextDuckLines][1],
+					Target.duckLines[Target.nextDuckLines][2],
+					Target.duckLines[Target.nextDuckLines][3], targetImgCurrent));
 
 			// Here we increase nextDuckLines so the next duck will be created
 			// on the next line
-			Duck.nextDuckLines++;
-			if (Duck.nextDuckLines >= Duck.duckLines.length) {
-				Duck.nextDuckLines = 0;
+			Target.nextDuckLines++;
+			if (Target.nextDuckLines >= Target.duckLines.length) {
+				Target.nextDuckLines = 0;
 			}
 
-			Duck.lastDuckTime = System.nanoTime();
+			Target.lastDuckTime = System.nanoTime();
 		}
 
 		// Update all ducks
@@ -174,7 +252,7 @@ public class Game {
 			ducks.get(i).Update();
 
 			// Checks if duck leaves screen and then removes
-			if (ducks.get(i).x < 0 - duckImg.getWidth()) {
+			if (ducks.get(i).x < 0 - targetImgCurrent.getWidth()) {
 				ducks.remove(i);
 				runawayDucks++;
 			}
@@ -190,11 +268,14 @@ public class Game {
 				for (int i = 0; i < ducks.size(); i++) {
 					// Check if mouse was over duck's head or body when player
 					// shot
+/*
 					if (new Rectangle(ducks.get(i).x + 18, ducks.get(i).y, 27,
 							30).contains(mousePosition)
 							|| new Rectangle(ducks.get(i).x + 30,
 									ducks.get(i).y + 30, 88, 25)
 									.contains(mousePosition)) {
+*/
+					if (new Rectangle(ducks.get(i).x, ducks.get(i).y, 100, 150).contains(mousePosition)) {
 						killedDucks++;
 						score += ducks.get(i).score;
 
@@ -211,8 +292,8 @@ public class Game {
 			}
 		}
 
-		// When 200 ducks runaway, the game ends
-		if (runawayDucks > 200) {
+		// When X ducks runaway, the game ends
+		if (runawayDucks > 50) {
 			Framework.gameState = Framework.GameState.GAMEOVER;
 
 		}
@@ -239,13 +320,18 @@ public class Game {
 		
 		g2d.drawImage(sightImg, mousePosition.x - sightImgMiddleWidth, mousePosition.y - sightImgMiddleHeight, null);
 		
+		font = new Font("monospaced", Font.BOLD, 28);
 		g2d.setFont(font);
 		g2d.setColor(Color.darkGray);
-		
-		g2d.drawString("RUNAWAY: " + runawayDucks, 10, 25);
-		g2d.drawString("KILLS: " + killedDucks, 250, 25);
-		g2d.drawString("SHOOTS: " + shoots, 450, 25);
-		g2d.drawString("SCORE: " + score, 650, 25);
+		g2d.drawString("RUNAWAY: " + runawayDucks, 10, 25 + 2);
+		g2d.drawString("KILLS: " + killedDucks, 250, 25 + 2);
+		g2d.drawString("SHOTS: " + shoots, 450, 25 + 2);
+		g2d.drawString("SCORE: " + score, 650, 25 + 2);
+		g2d.setColor(Color.WHITE);
+		g2d.drawString("RUNAWAY: " + runawayDucks, 10 + 2, 25);
+		g2d.drawString("KILLS: " + killedDucks, 250 + 2, 25);
+		g2d.drawString("SHOTS: " + shoots, 450 + 2, 25);
+		g2d.drawString("SCORE: " + score, 650 + 2, 25);
 	}
 
 	/**
@@ -257,17 +343,20 @@ public class Game {
 	public void DrawGameOver(Graphics2D g2d, Point mousePosition) {
 		Draw(g2d, mousePosition);
 		
-		// The first text is used for shade
-		g2d.setColor(Color.BLACK);
-		tmpStr = "Game Over";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.40) + 1);
-		tmpStr = "Press space or enter to restart";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.45) + 1);
+		font = new Font("monospaced", Font.BOLD, 72);
+		g2d.setFont(font);
 
-		g2d.setColor(Color.RED);
+		// The first text is used for shade
 		tmpStr = "Game Over";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.40));
+		g2d.setColor(Color.BLACK);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.40) + 2);
+		g2d.setColor(Color.WHITE);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 2, (int) (Framework.frameHeight * 0.40));
+
 		tmpStr = "Press space or enter to restart";
-		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 1, (int) (Framework.frameHeight * 0.45));
+		g2d.setColor(Color.BLACK);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2, (int) (Framework.frameHeight * 0.60) + 2);
+		g2d.setColor(Color.WHITE);
+		g2d.drawString(tmpStr, Framework.frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2 + 2, (int) (Framework.frameHeight * 0.60));
 }
 }
