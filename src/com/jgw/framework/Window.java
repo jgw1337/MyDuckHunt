@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 public class Window extends JFrame {
 	public Window() {
 		// Title
-		this.setTitle("My Duck Hunt");
+		this.setTitle("My Target Hunt");
 
 		// true = full screen
 		if (true) {
