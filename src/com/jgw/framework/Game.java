@@ -61,7 +61,7 @@ public class Game {
 	private BufferedImage targetImgCurrent;
 	private BufferedImage targetImg1, targetImg2, targetImg3, targetImg4, targetImg5;
 	private BufferedImage targetImg6, targetImg7, targetImg8, targetImg9, targetImg10;
-	private BufferedImage targetImg11, targetImg12, targetImg13;
+	private BufferedImage targetImg11, targetImg12, targetImg13, targetImg14;
 
 	// Gun sight
 	private BufferedImage sightImg;
@@ -151,6 +151,12 @@ public class Game {
 			URL targetImg12Url = this.getClass().getResource("data/char_simon.png");
 			targetImg12 = ImageIO.read(targetImg12Url);
 			
+			URL targetImg13Url = this.getClass().getResource("data/profile_i.jpg");
+			targetImg13 = ImageIO.read(targetImg13Url);
+			
+			URL targetImg14Url = this.getClass().getResource("data/profile_trinity.jpg");
+			targetImg14 = ImageIO.read(targetImg14Url);
+			
 			URL sightImgUrl = this.getClass().getResource("data/sight.png");
 			sightImg = ImageIO.read(sightImgUrl);
 			sightImgMiddleWidth = sightImg.getWidth() / 2;
@@ -189,7 +195,7 @@ public class Game {
 		// Create new target, if it's time, and add to array
 		if (System.nanoTime() - Target.lastTargetTime > Target.timeBetweenTargets) {
 			// Random target
-			switch (rand.nextInt(13)+1) {
+			switch (rand.nextInt(14)+1) {
 			case 1:
 				targetImgCurrent = targetImg1;
 				break;
@@ -225,6 +231,12 @@ public class Game {
 				break;
 			case 12:
 				targetImgCurrent = targetImg12;
+				break;
+			case 13:
+				targetImgCurrent = targetImg13;
+				break;
+			case 14:
+				targetImgCurrent = targetImg14;
 				break;
 			default:
 				targetImgCurrent = targetImg1;
