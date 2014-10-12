@@ -192,7 +192,7 @@ public class Framework extends Canvas {
 			break;
 		case MAIN_MENU:
 			g2d.drawImage(menuImg, 0, 0, frameWidth, frameHeight, null);
-			tmpStr = "Use left mouse button to shoot the duck.";
+			tmpStr = "Use left mouse button to shoot the target.";
 			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.65));
 			tmpStr = "Click with left mouse button to start the game.";
 			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.70));
