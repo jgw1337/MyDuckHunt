@@ -59,9 +59,7 @@ public class Game {
 
 	// Target
 	private BufferedImage targetImgCurrent;
-	private BufferedImage targetImg1, targetImg2, targetImg3, targetImg4, targetImg5;
-	private BufferedImage targetImg6, targetImg7, targetImg8, targetImg9, targetImg10;
-	private BufferedImage targetImg11, targetImg12, targetImg13, targetImg14;
+	private BufferedImage[] targetImg = new BufferedImage[15];
 
 	// Gun sight
 	private BufferedImage sightImg;
@@ -115,47 +113,50 @@ public class Game {
 			URL grassImgUrl = this.getClass().getResource("data/grass.png");
 			grassImg = ImageIO.read(grassImgUrl);
 
+			URL targetImg0Url = this.getClass().getResource("data/profile_e_2.jpg");
+			targetImg[0] = ImageIO.read(targetImg0Url);
+
 			URL targetImg1Url = this.getClass().getResource("data/profile_e.jpg");
-			targetImg1 = ImageIO.read(targetImg1Url);
+			targetImg[1] = ImageIO.read(targetImg1Url);
 
 			URL targetImg2Url = this.getClass().getResource("data/profile_f.jpg");
-			targetImg2 = ImageIO.read(targetImg2Url);
+			targetImg[2] = ImageIO.read(targetImg2Url);
 
 			URL targetImg3Url = this.getClass().getResource("data/profile_g.jpg");
-			targetImg3 = ImageIO.read(targetImg3Url);
+			targetImg[3] = ImageIO.read(targetImg3Url);
 
 			URL targetImg4Url = this.getClass().getResource("data/profile_j.jpg");
-			targetImg4 = ImageIO.read(targetImg4Url);
+			targetImg[4] = ImageIO.read(targetImg4Url);
 
 			URL targetImg5Url = this.getClass().getResource("data/profile_m.jpg");
-			targetImg5 = ImageIO.read(targetImg5Url);
+			targetImg[5] = ImageIO.read(targetImg5Url);
 
 			URL targetImg6Url = this.getClass().getResource("data/profile_w.jpg");
-			targetImg6 = ImageIO.read(targetImg6Url);
+			targetImg[6] = ImageIO.read(targetImg6Url);
 
 			URL targetImg7Url = this.getClass().getResource("data/char_link.png");
-			targetImg7 = ImageIO.read(targetImg7Url);
+			targetImg[7] = ImageIO.read(targetImg7Url);
 			
 			URL targetImg8Url = this.getClass().getResource("data/char_mario.png");
-			targetImg8 = ImageIO.read(targetImg8Url);
+			targetImg[8] = ImageIO.read(targetImg8Url);
 			
 			URL targetImg9Url = this.getClass().getResource("data/char_megaman.png");
-			targetImg9 = ImageIO.read(targetImg9Url);
+			targetImg[9] = ImageIO.read(targetImg9Url);
 			
 			URL targetImg10Url = this.getClass().getResource("data/char_sackboy.png");
-			targetImg10 = ImageIO.read(targetImg10Url);
+			targetImg[10] = ImageIO.read(targetImg10Url);
 			
 			URL targetImg11Url = this.getClass().getResource("data/char_samus.png");
-			targetImg11 = ImageIO.read(targetImg11Url);
+			targetImg[11] = ImageIO.read(targetImg11Url);
 			
 			URL targetImg12Url = this.getClass().getResource("data/char_simon.png");
-			targetImg12 = ImageIO.read(targetImg12Url);
+			targetImg[12] = ImageIO.read(targetImg12Url);
 			
 			URL targetImg13Url = this.getClass().getResource("data/profile_i.jpg");
-			targetImg13 = ImageIO.read(targetImg13Url);
+			targetImg[13] = ImageIO.read(targetImg13Url);
 			
 			URL targetImg14Url = this.getClass().getResource("data/profile_trinity.jpg");
-			targetImg14 = ImageIO.read(targetImg14Url);
+			targetImg[14] = ImageIO.read(targetImg14Url);
 			
 			URL sightImgUrl = this.getClass().getResource("data/sight.png");
 			sightImg = ImageIO.read(sightImgUrl);
@@ -195,53 +196,8 @@ public class Game {
 		// Create new target, if it's time, and add to array
 		if (System.nanoTime() - Target.lastTargetTime > Target.timeBetweenTargets) {
 			// Random target
-			switch (rand.nextInt(14)+1) {
-			case 1:
-				targetImgCurrent = targetImg1;
-				break;
-			case 2:
-				targetImgCurrent = targetImg2;
-				break;
-			case 3:
-				targetImgCurrent = targetImg3;
-				break;
-			case 4:
-				targetImgCurrent = targetImg4;
-				break;
-			case 5:
-				targetImgCurrent = targetImg5;
-				break;
-			case 6:
-				targetImgCurrent = targetImg6;
-				break;
-			case 7:
-				targetImgCurrent = targetImg7;
-				break;
-			case 8:
-				targetImgCurrent = targetImg8;
-				break;
-			case 9:
-				targetImgCurrent = targetImg9;
-				break;
-			case 10:
-				targetImgCurrent = targetImg10;
-				break;
-			case 11:
-				targetImgCurrent = targetImg11;
-				break;
-			case 12:
-				targetImgCurrent = targetImg12;
-				break;
-			case 13:
-				targetImgCurrent = targetImg13;
-				break;
-			case 14:
-				targetImgCurrent = targetImg14;
-				break;
-			default:
-				targetImgCurrent = targetImg1;
-				break;
-			}
+
+			targetImgCurrent = targetImg[rand.nextInt(targetImg.length)];
 			// Create new target and add to array
 			targets.add(new Target(Target.targetLines[Target.nextTargetLines][0]
 					+ rand.nextInt(200), Target.targetLines[Target.nextTargetLines][1],
