@@ -193,11 +193,22 @@ public class Framework extends Canvas {
 		case MAIN_MENU:
 			g2d.drawImage(menuImg, 0, 0, frameWidth, frameHeight, null);
 			tmpStr = "Use left mouse button to shoot the target.";
-			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.65));
+			g2d.setColor(Color.darkGray);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.65) + 2);
+			g2d.setColor(Color.WHITE);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2) - 2, (int) (frameHeight * 0.65));
+
 			tmpStr = "Click with left mouse button to start the game.";
-			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.70));
+			g2d.setColor(Color.darkGray);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.70) + 2);
+			g2d.setColor(Color.WHITE);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2) - 2, (int) (frameHeight * 0.70));
+
 			tmpStr = "Press ESC at any time to exit the game.";
-			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.75));
+			g2d.setColor(Color.darkGray);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2), (int) (frameHeight * 0.75) + 2);
+			g2d.setColor(Color.WHITE);
+			g2d.drawString(tmpStr, (frameWidth/2 - g2d.getFontMetrics().stringWidth(tmpStr)/2) - 2, (int) (frameHeight * 0.75));
 			tmpStr = "-jgw-";
 			g2d.drawString(tmpStr, 7, frameHeight - 5);
 			break;
